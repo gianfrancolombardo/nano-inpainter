@@ -35,19 +35,23 @@ const ResultViewer: React.FC<ResultViewerProps> = ({ originalSrc, editedSrc, onR
         ref={containerRef}
         className="relative w-full aspect-auto rounded-xl overflow-hidden select-none border-2 border-gray-700/50 shadow-2xl"
       >
+        {/* Base Layer: Original Image and its label */}
+        <img src={originalSrc} alt="Original" className="block w-full h-auto pointer-events-none" />
         <div className="absolute top-3 left-3 z-10 bg-black/60 text-white text-xs font-semibold px-3 py-1.5 rounded-full pointer-events-none backdrop-blur-sm">
             ORIGINAL
         </div>
-        <div className="absolute top-3 right-3 z-10 bg-black/60 text-white text-xs font-semibold px-3 py-1.5 rounded-full pointer-events-none backdrop-blur-sm">
-            EDITADA
-        </div>
-        <img src={originalSrc} alt="Original" className="block w-full h-auto pointer-events-none" />
+
+        {/* Overlay Layer: Edited Image (clipped) and its label */}
         <div
           className="absolute top-0 left-0 h-full w-full overflow-hidden"
           style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
         >
           <img src={editedSrc} alt="Editada" className="block w-full h-auto pointer-events-none" />
+          <div className="absolute top-3 right-3 z-10 bg-black/60 text-white text-xs font-semibold px-3 py-1.5 rounded-full pointer-events-none backdrop-blur-sm">
+            EDITADA
+          </div>
         </div>
+        
         <div
             className="absolute top-0 h-full w-1 bg-white/80 cursor-ew-resize"
             style={{ left: `${sliderPosition}%`, transform: 'translateX(-50%)' }}
