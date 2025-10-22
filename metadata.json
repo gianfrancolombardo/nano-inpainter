@@ -1,0 +1,5 @@
+{
+  "name": "Gemini Image Inpainter",
+  "description": "An application that allows users to upload an image, mask an area they wish to remove, and use Gemini AI to intelligently fill in the space.",
+  "requestFramePermissions": []
+}
